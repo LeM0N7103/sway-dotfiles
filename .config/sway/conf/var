@@ -1,0 +1,56 @@
+# Variables
+
+## MOD Key
+set $mod Mod4
+
+## vim-like directions
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Commands
+
+## exit command
+set $exit swaynag -t warning -m "Really leaving??? Don't leaveee!! ( ≧Д≦)" -B 'Yep' 'swaymsg exit'
+
+## volume commands
+set $vol_up wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+set $vol_down wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+set $vol_mute wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+## media
+set $play playerctl play-pause
+set $next playerctl next
+set $prev playerctl previous
+
+## screenshot
+set $ss_region grim -g "$(slurp)" - | wl-copy
+set $ss_screen grim - | wl-copy
+
+# Paths
+
+## Wallpaper stuff
+set $wallpaper_path $HOME/Pictures/current_walls
+
+## Power Menu
+set $powermenu ~/.local/bin/powermenu.sh
+
+## Apps
+set $term foot
+set $menu fuzzel
+set $browser librewolf
+set $vol pwvucontrol
+set $file_manager thunar
+
+## Misc Apps
+set $gamingApps "^(steam_app.*|gamescope)$"
+
+## Monitors
+set $MON1 DP-1
+set $MON2 DP-2
+set $MON3 HDMI-A-1
+set $PRIME_MON DP-1
+
+## Workspaces
+set $amadeus "10:amadeus"

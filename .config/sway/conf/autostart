@@ -1,0 +1,5 @@
+# Autostart
+exec lxqt-policykit-agent
+exec mako
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store

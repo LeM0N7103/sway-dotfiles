@@ -1,0 +1,12 @@
+## Sway config
+#include ~/.config/sway/theme-colors.conf
+# Config files
+include ./conf/var
+include ./conf/autostart
+include ./conf/decor
+include ./conf/rules
+include ./conf/output
+include ./conf/input
+include ./conf/binds
+#
+include /etc/sway/config.d/*

@@ -1,0 +1,174 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+ * the wired // waybar stylesheet
+ * "navi, connect to the wired."
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+
+/* ── color layer ─────────────────────────────────────────────────────────── */
+@define-color bg         #131318;
+@define-color bg-alt     #1a1a23;
+@define-color border     #656583;
+@define-color dead       #1a1a23;
+@define-color text-dead  #656583;
+@define-color text-low   #b4adc3;
+@define-color text       #dfdbc1;
+@define-color text-hi    #f7f6f0;
+@define-color accent     #b6a7ce;
+@define-color accent-hi  #b3c4e8;
+@define-color green      #91a987;
+@define-color amber      #d2be98;
+@define-color red        #cf676a;
+
+/* ── reset ───────────────────────────────────────────────────────────────── */
+* {
+    font-family: "JetBrainsMono Nerd Font", "Noto Sans CJK JP Medium", monospace;
+    font-size: 16px;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    min-height: 0;
+    transition-duration: 0s;
+}
+
+/* ── bar ─────────────────────────────────────────────────────────────────── */
+window#waybar {
+    background-color: @bg;
+    border-bottom: 1px solid @border;
+    color: @text;
+}
+
+.modules-left {
+    padding: 0 6px;
+}
+.modules-center {
+    padding: 0;
+}
+.modules-right {
+    padding: 0 6px;
+}
+
+/* ── all left-side status modules ───────────────────────────────────────── */
+#pulseaudio,
+#network,
+#bluetooth,
+#memory,
+#cpu {
+    color: @text;
+    padding: 0 9px;
+}
+
+/* ── // separator ────────────────────────────────────────────────────────── */
+#custom-sep {
+    color: @text-dead;
+    padding: 0 1px;
+}
+
+/* ── 音量 :: volume ──────────────────────────────────────────────────────── */
+#pulseaudio.muted {
+    color: @text-low;
+}
+
+/* ── 接続 :: network ─────────────────────────────────────────────────────── */
+#network.disconnected,
+#network.disabled {
+    color: @text-low;
+}
+
+/* ── PHY :: bluetooth ────────────────────────────────────────────────────── */
+#bluetooth.connected {
+    color: @accent;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+    color: @text-low;
+}
+
+/* ── 記憶 :: memory ──────────────────────────────────────────────────────── */
+#memory.warning {
+    color: @amber;
+}
+#memory.critical {
+    color: @red;
+}
+
+/* ── トレイ :: tray ──────────────────────────────────────────────────────── */
+#tray {
+    padding: 0 6px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    color: @amber;
+}
+
+/* ── 処理 :: cpu ─────────────────────────────────────────────────────────── */
+#cpu.warning {
+    color: @amber;
+}
+#cpu.critical {
+    color: @red;
+}
+
+/* ── [PWR] :: power ──────────────────────────────────────────────────────── */
+#custom-power {
+    color: @red;
+    padding: 0 10px;
+}
+
+#custom-power:hover {
+    background-color: @red;
+    color: @text-hi;
+}
+
+/* ── 現在時刻 :: clock ───────────────────────────────────────────────────── */
+#clock {
+    color: @accent-hi;
+    padding: 0 20px;
+    letter-spacing: 2px;
+}
+
+/* ── 空間 :: workspaces ──────────────────────────────────────────────────── */
+#workspaces {
+    padding: 0 2px;
+}
+
+#workspaces button {
+    color: @text-dead;
+    background: transparent;
+    padding: 0 8px;
+    border-bottom: 1px solid transparent;
+}
+
+#workspaces button:hover {
+    box-shadow: none;
+    background: @bg-alt;
+    color: @text;
+}
+
+#workspaces button.focused {
+    color: @accent-hi;
+    border-bottom: 1px solid @accent;
+}
+
+#workspaces button.urgent {
+    color: @red;
+    border-bottom: 1px solid @red;
+}
+
+/* ── 形態 :: mode (resize etc.) ──────────────────────────────────────────── */
+#mode {
+    color: @amber;
+    padding: 0 6px;
+}
+
+/* ── >> :: window title ──────────────────────────────────────────────────── */
+#window {
+    color: @text-low;
+    padding: 0 8px;
+}

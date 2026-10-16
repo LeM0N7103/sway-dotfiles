@@ -1,0 +1,12 @@
+# secrets / machine-specific
+*.key
+*.pem
+.env
+**/id_*
+**/*token*
+**/*secret*
+
+# junk
+*.log
+*.swp
+.DS_Store

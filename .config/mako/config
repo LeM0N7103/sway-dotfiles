@@ -1,0 +1,31 @@
+font=JetBrainsMono Nerd Font Mono 14
+background-color=#131318e6
+text-color=#f7f6f0
+border-color=#b6a7ce
+progress-color=over #656583
+
+width=360
+height=150
+margin=12
+padding=14
+border-size=2
+border-radius=0
+
+anchor=top-right
+layer=overlay
+icons=1
+max-icon-size=48
+default-timeout=6000
+ignore-timeout=0
+
+[urgency=low]
+border-color=#656583
+text-color=#dfdbc1
+default-timeout=4000
+
+[urgency=high]
+border-color=#cf676a
+default-timeout=0
+
+[mode=do-not-disturb]
+invisible=1

@@ -1,0 +1,70 @@
+# Workspaces
+workspace 1 output $MON1
+workspace 2 output $MON1
+workspace 3 output $MON1
+workspace 4 output $MON2
+workspace 5 output $MON2
+workspace 6 output $MON2
+workspace 7 output $MON3
+workspace 8 output $MON3
+workspace 9 output $MON3
+workspace $amadeus output $PRIME_MON
+
+## Gaming
+for_window [tag="^(.*game.*)$"] move container to workspace $amadeus, fullscreen enable
+for_window [class=$gamingApps] move container to workspace $amadeus
+for_window [app_id=$gamingApps] move container to workspace $amadeus
+for_window [class="^(steam)$" title="^(Friends List)$"] floating enable
+for_window [class="^(steam)$" title="^(Launching\.{3})$"] floating enable, move position center, move container to workspace $amadeus
+for_window [class=$gamingApps title="^(?!.*\\\\home\\\\).*$"] border none, fullscreen enable
+for_window [class="^(steam_app.*)$" title="^$"] floating enable, move position center, fullscreen disable, move container to workspace $amadeus
+
+## Apps
+##microslop apps
+for_window [class="^(.*\.exe)$"] floating enable, move position center, move container to output $PRIME_MON, fullscreen disable
+##any launchers
+for_window [class="^(.*[Ll]auncher.*)$"] floating enable, move container to output $PRIME_MON
+for_window [app_id="^(.*[Ll]auncher.*)$"] floating enable, move container to output $PRIME_MON
+##spotify
+for_window [class="^(spotify)$"] move container to workspace 6
+for_window [app_id="^(spotify)$"] move container to workspace 6
+##mpv
+for_window [class="^(mpv)$"] move container to output $PRIME_MON
+for_window [app_id="^(mpv)$"] move container to output $PRIME_MON
+for_window [app_id="kitty"] floating enable, resize set 1706 960, move position center
+
+## File dialogs
+for_window [title="^Open File"] floating enable, move position center
+for_window [title="^Select a File"] floating enable, move position center
+for_window [title="^Open Folder"] floating enable, move position center
+for_window [title="^Save As"] floating enable, move position center
+for_window [title="^Library"] floating enable, move position center
+for_window [title="^File Upload"] floating enable, move position center
+for_window [title="wants to save$"] floating enable, move position center
+for_window [title="wants to open$"] floating enable, move position center
+for_window [app_id="^(org\.kde\.keditfiletype)$"] floating enable
+for_window [app_id="^(org\.kde\.ark)$"] resize set 40 ppt 40 ppt
+for_window [class="^([Xx]dg-desktop-portal-gtk)$"] floating enable
+for_window [app_id="^(xdg-desktop-portal-gtk)$"] floating enable
+
+## pwvucontrol
+### Adjust 864x486 to ~45% of your resolution (e.g. 1920x1080 → 864x486)
+for_window [app_id="pwvucontrol"] floating enable
+for_window [app_id="pwvucontrol"] resize set 864 486
+for_window [app_id="pwvucontrol"] move position center
+
+## Picture-in-Picture
+### size  = ~25% of screen  (e.g. 1920x1080 → 480x270)
+### move  = ~73% x, ~72% y  (e.g. 1920x1080 → 1401x778, minus window size)
+for_window [title="[Pp]icture.in.[Pp]icture"] floating enable
+for_window [title="[Pp]icture.in.[Pp]icture"] resize set 480 270
+for_window [title="[Pp]icture.in.[Pp]icture"] move position 1401 778
+for_window [title="[Pp]icture.in.[Pp]icture"] sticky enable
+
+## Ricing stuff and rando
+for_window [class="^(kvantummanager|qt[56]ct|nwg-look)$"] floating enable
+for_window [app_id="^(kvantummanager|qt[56]ct|nwg-look)$"] floating enable
+for_window [title="^(Winetricks.*|Protontricks.*)$"] floating enable
+
+## XWayland fix
+no_focus [shell="xwayland" class="^$" title="^$" floating]

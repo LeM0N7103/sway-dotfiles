@@ -1,0 +1,8 @@
+# Monitors
+output DP-1 res 3440x1440@180.000Hz position 0,1080
+output DP-2 res 2560x1440@180.001Hz position 3440,1080
+output HDMI-A-1 res 3840x2160@60.000Hz position 2500,0 scale 2
+
+output DP-1 bg $wallpaper_path/DP_1.png fill
+output DP-2 bg $wallpaper_path/DP_2.png fill
+output HDMI-A-1 bg $wallpaper_path/HDMI_A_1.png fill

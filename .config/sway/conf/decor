@@ -1,0 +1,35 @@
+# Window: border, background, text, indicator, child_border
+
+# --- Palette (from foot.ini) ---
+set $bg        #131318
+set $bg_alt    #1a1a23
+set $fg        #f7f6f0
+set $fg_dim    #dfdbc1
+set $muted     #656583
+set $red       #cf676a
+set $green     #91a987
+set $yellow    #d2be98
+set $blue      #b3c4e8
+set $purple    #b6a7ce
+
+# --- Window borders ---
+#                       border     background  text      indicator  child_border
+client.focused          $purple    $bg         $fg       $blue      $purple
+client.focused_inactive $muted     $bg_alt     $fg_dim   $bg_alt    $muted
+client.focused_tab_title $muted    $bg_alt     $fg_dim
+client.unfocused        $bg_alt    $bg         $muted    $bg_alt    $bg_alt
+client.urgent           $red       $red        $fg       $red       $red
+client.placeholder      $bg        $bg         $fg       $bg        $bg
+client.background       $bg
+
+# Gaps between windows
+gaps inner 4px
+gaps outer 0px
+default_border pixel 2px
+default_floating_border pixel 3px
+# cursor
+seat seat0 xcursor_theme Bibata-Original-Classic 24
+
+bar {
+    swaybar_command waybar
+}

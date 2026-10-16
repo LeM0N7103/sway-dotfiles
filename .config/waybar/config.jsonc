@@ -1,0 +1,134 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// the wired // waybar configuration
+// "close the world. txen eht nepO."
+// ─────────────────────────────────────────────────────────────────────────────
+
+{
+  "layer": "top",
+  "position": "top",
+  "height": 28,
+  "exclusive": true,
+  "passthrough": false,
+  "spacing": 0,
+  "margin-left": 260,
+  "margin-right": 260,
+  "margin-top": 4,
+
+  // ── layer layout ────────────────────────────────────────────────────────
+  "modules-left": ["sway/workspaces", "custom/sep", "sway/mode", "sway/window"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "pulseaudio",
+    "custom/sep",
+    "network",
+    "custom/sep",
+    "memory",
+    "custom/sep",
+    "cpu",
+    "custom/sep",
+    "tray",
+    "custom/sep",
+    "custom/power",
+  ],
+
+  // ── 音量 :: sound ────────────────────────────────────────────────────────
+  "pulseaudio": {
+    "format": "音量:{volume}%",
+    "format-muted": "音量:----",
+    "on-click": "pwvucontrol",
+    "scroll-step": 5,
+    "tooltip": false,
+  },
+
+  // ── 接続 :: network ──────────────────────────────────────────────────────
+  "network": {
+    "format-wifi": "電波:{essid}",
+    "format-ethernet": "有線:{ifname}",
+    "format-disconnected": "接続:NULL",
+    "format-disabled": "接続:--",
+    "on-click": "nm-connection-editor",
+    "tooltip-format": "ip  :: {ipaddr}\ngw  :: {gwaddr}\nsig :: {signalStrength}%",
+    "interval": 5,
+  },
+
+  // ── PHY :: bluetooth ─────────────────────────────────────────────────────
+  "bluetooth": {
+    "format": "PHY:ON",
+    "format-disabled": "PHY:--",
+    "format-connected": "PHY:{device_alias}",
+    "on-click": "blueman-manager",
+    "format-connected-battery": "PHY:{device_alias} [{device_battery_percentage}%]",
+    "tooltip": false,
+  },
+
+  // ── 記憶 :: memory ───────────────────────────────────────────────────────
+  "memory": {
+    "format": "記憶:{used:0.1f}G",
+    "tooltip-format": "used  :: {used}M\ntotal :: {total}M\navail :: {avail}M",
+    "interval": 1,
+    "warning": 12.5,
+    "critical": 15.5,
+    "on-click": "foot -e htop",
+  },
+
+  // ── 処理 :: cpu ──────────────────────────────────────────────────────────
+  "cpu": {
+    "format": "処理:{usage}%",
+    "tooltip-format": "load :: {load}",
+    "interval": 1,
+    "warning": 75,
+    "critical": 90,
+    "on-click": "foot -e btop",
+  },
+
+  // ── [PWR] :: power ───────────────────────────────────────────────────────
+  "custom/power": {
+    "format": "[PWR]",
+    "on-click": "~/.local/bin/powermenu.sh",
+    "tooltip": false,
+  },
+
+  // ── トレイ :: tray ───────────────────────────────────────────────────────
+  "tray": {
+    "icon-size": 16,
+    "spacing": 6,
+  },
+
+  // ── 現在時刻 :: clock ────────────────────────────────────────────────────
+  // "present day. present time."
+  "clock": {
+    "format": "{:%H.%M%S}",
+    "format-alt": "MIRAIGADGET // {:%Y-%m-%d}",
+    "interval": 1,
+    "tooltip-format": "present day. present time.\n{:%A, %d %B %Y}",
+  },
+
+  // ── // :: separator ──────────────────────────────────────────────────────
+  "custom/sep": {
+    "format": "//",
+    "tooltip": false,
+  },
+
+  // ── 空間 :: workspaces ───────────────────────────────────────────────────
+  "sway/workspaces": {
+    "format": "{name}",
+    "disable-scroll": false,
+    "all-outputs": true,
+  },
+
+  // ── 形態 :: mode (resize, etc.) ──────────────────────────────────────────
+  "sway/mode": {
+    "format": "// {} //",
+    "tooltip": false,
+  },
+
+  // ── >> :: window title ───────────────────────────────────────────────────
+  "sway/window": {
+    "format": ">> {title}",
+    "max-length": 55,
+    "tooltip": false,
+    "rewrite": {
+      "^$": ">> the wired",
+    },
+  },
+}
